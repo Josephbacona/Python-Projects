@@ -22,7 +22,7 @@ def describe_game(name):
     """
         check if this is a new game or not.
         If it is new, get the user's name.
-        If it is not a new game, thank the plaer for
+        If it is not a new game, thank the player for
         playing again and continue with the game
     """
     # meaning, if we do not already have this user's name,
@@ -46,7 +46,7 @@ def nice_mean(nice,mean,name):
     stop = True
     while stop:
         show_score(nice,mean,name)
-        pick = input("\nA stranger approaches you for a \nconversation. Will you be nice \nor mean? (N/M) \n>>>: ").lower()
+        pick = input("\nA stranger approaches you and \nasks if you can spare a dolloar. Will you be nice \nor mean? (N/M) \n>>>: ").lower()
         if pick == "n":
             print("\nThe stranger walks away smiling...")
             nice = (nice + 1)
@@ -81,12 +81,13 @@ def win(nice,mean,name):
 
 def lose(nice,mean,name):
     # Substiture the {} wildcards with our variable values
-    print("\nAhhh too bad, game over! \n{}, you live in a dirty beat-up \nvan by the river, wretched and alone!".format(name))
+    print("\nAhhh too bad, game over! \n{}, you live in a dirty beat-up \ntent under a bridge, wretched and alone!".format(name))
     # call again function and pass in our variables
     again(nice,mean,name)
+    os.system("game_over.wav")
 
 
-def agiain(nice,mean,name):
+def again(nice,mean,name):
     stop = True
     while stop:
         choice = input("\nDo you want to play again? (y/n):\n>>> ").lower()
@@ -94,7 +95,7 @@ def agiain(nice,mean,name):
             stop = False
             reset(nice,mean,name)
         if choice == "n":
-            print("\nOh, so sad, sorry to see you go!")
+            print("\nOh, so sad, sorry to see you go, come back soon!")
             stop = False
             quit()
         else:
@@ -111,4 +112,6 @@ def reset(nice,mean,name):
 
 if __name__ == "__main__":
     start()
+
+
 
