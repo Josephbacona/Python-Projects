@@ -8,6 +8,7 @@ fileList = ('information.docx','Hello.txt','myImage.png', \
 
 with conn:
     cur = conn.cursor()
+    #This creates a table for the database
     cur.execute("CREATE TABLE IF NOT EXISTS tbl_files( \
         ID INTEGER PRIMARY KEY AUTOINCREMENT,\
         col_filename TEXT)")
@@ -18,6 +19,8 @@ conn = sqlite3.connect('test.db')
 
 with conn:
     cur = conn.cursor()
+    #This for loop, loops through each item in the list, finding files
+    #that end in .txt and inserts them into tbl_files
     for file in fileList:
         if file.endswith('.txt'):
             cur.execute('INSERT INTO tbl_files(col_filename) VALUES(?)', (file,))
