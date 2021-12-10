@@ -1,7 +1,14 @@
 class Protected:
     def __init__(self):
-        self._protectedVar = 0  # This is creating a protected method
-                                # It is prefixed by a single underscore
-obj = Protected()
-obj._protectedVar = 34
-print(obj._protectedVar)
+        self.__privateVar = 12
+
+    def getPrivate(self):
+        print(self.__privateVar)    # private is denoted by a double underscore prefix
+                                    
+    def setPrivate(self, private):
+        self.__privateVar = private
+
+obj = Protected()           # obj gets the data of the private variable
+obj.getPrivate()
+obj.setPrivate(23)
+obj.getPrivate()
